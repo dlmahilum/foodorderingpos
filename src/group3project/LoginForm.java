@@ -179,6 +179,9 @@ public class LoginForm extends javax.swing.JFrame {
                         } else if (userType.equals("cashier")) {
                             JOptionPane.showMessageDialog(null, "Welcome, Cashier!");
                             // You can open another form for cashiers here
+                             POS callMethod = new POS();
+                            callMethod.setVisible(true);
+                            dispose();
                         }
                     } else {
                         JOptionPane.showMessageDialog(null, "Invalid username or password");
