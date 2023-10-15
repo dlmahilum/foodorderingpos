@@ -67,7 +67,7 @@ public class LoginForm extends javax.swing.JFrame {
         });
 
         btnExit.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        btnExit.setText("Clear");
+        btnExit.setText("Back");
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitActionPerformed(evt);
@@ -153,7 +153,8 @@ public class LoginForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        // TODO add your handling code here:
+
+        dispose();
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
