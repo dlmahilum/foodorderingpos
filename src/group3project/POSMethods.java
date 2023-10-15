@@ -16,7 +16,7 @@ public class POSMethods {
     public void getAllRows(JTable tableIn) {
         DefaultTableModel tblModel = (DefaultTableModel) tableIn.getModel();
         tblModel.setRowCount(0);
-        String sqlQuery = "SELECT * FROM tbl_food_item WHERE fld_status = 'Available'";
+        String sqlQuery = "SELECT * FROM tbl_food_item WHERE fld_status = 'Available';";
         
         try {
             Connection conn = DriverManager.getConnection(address, userName, passWord);
@@ -47,8 +47,7 @@ public class POSMethods {
     
     public int addNewOrder(int prodID, double prodPrice, int prodQty, double prodTotal){
         int rowsAffected = 0;
-        String sqlQuery = "INSERT INTO tbl_order_details(fld_mid, fld_price"
-                + ", fld_quantity, fld_total_amount) VALUES (?,?,?,?);";
+        String sqlQuery = "INSERT INTO tbl_order_details(fld_mid, fld_price, fld_quantity, fld_total_amount) VALUES (?,?,?,?);";
         
         try {
             Connection conn = DriverManager.getConnection(address, userName, passWord);
@@ -72,15 +71,16 @@ public class POSMethods {
     
 //-=-=-=-=-=-=-=-=-=-=-=
     
-    public int addNewReciept(String Customer, int rcQty, double rcTotal){
+    public int addNewReciept(String Customer, String cashierName, int rcQty, double rcTotal){
         int rowsAffected = 0;
-        String sqlQuery = "INSERT INTO tbl_reciept(fld_customer, fld_total_quantity, fld_receipt_total) VALUE (?,?,?,?);";
+        String sqlQuery = "INSERT INTO tbl_receipt(fld_customer, fld_cashiername, fld_total_quantity, fld_receipt_total) VALUE (?,?,?,?);";
         
         try {
             Connection conn = DriverManager.getConnection(address, userName, passWord);
             PreparedStatement stmt = conn.prepareStatement(sqlQuery);
             
             stmt.setString(1, Customer);
+            stmt.setString(2, cashierName);
             stmt.setInt(3, rcQty);
             stmt.setDouble(4, rcTotal);
             
@@ -95,16 +95,18 @@ public class POSMethods {
         return rowsAffected;
     }
     
-    public int getRecieptID(String Customer, int rcQty, double rcTotal) {
+    public int getRecieptID(String Customer, String cashierName, int rcQty, double rcTotal) {
         int rcID = 0;
-        String sqlQuery = "SELECT fld_rid FROM tbl_receipt WHERE fld_customer = ? AND fld_total_quantity = ? AND fld_receipt_total = ? ORDER BY fld_rid DESC;";
+        String sqlQuery = "SELECT fld_rid FROM tbl_receipt WHERE fld_customer = ? AND fld_cashiername = ? AND fld_total_quantity = ? AND fld_receipt_total = ? ORDER BY fld_rid DESC;";
         
         try {
             Connection conn = DriverManager.getConnection(address, userName, passWord);
             PreparedStatement stmt = conn.prepareStatement(sqlQuery);
             
-            stmt.setInt(1, rcQty);
-            stmt.setDouble(2, rcTotal);
+            stmt.setString(1, Customer);
+            stmt.setString(2, cashierName);
+            stmt.setInt(3, rcQty);
+            stmt.setDouble(4, rcTotal);
             
             ResultSet rs = stmt.executeQuery();
             
@@ -122,7 +124,7 @@ public class POSMethods {
 
     }
 
-    int getReceiptID(String Customer, int rcQty, double rcTotal) {
+    int getReceiptID(String Customer, String cashierName, int rcQty, double rcTotal) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

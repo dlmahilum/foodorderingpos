@@ -400,15 +400,17 @@ public class POS extends javax.swing.JFrame {
 
     private void btnCheckOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckOutActionPerformed
         String Customer = txtcustomername.getText();
+        String cashierName = getCashierNameForCurrentUser();  
         int rcQty = Integer.parseInt(txtTotalQty.getText());
         double rcTotal = Double.parseDouble(txtTotalPrice.getText());
         int receiptNumber = 0;
         POSMethods callPOSMethods = new POSMethods();
         
-        int result= 0;
-        result = callPOSMethods.addNewReciept(Customer, rcQty, rcTotal);
+         int result = callPOSMethods.addNewReciept(cashierName, Customer, rcQty, rcTotal);
+        
+     
         if (result == 1) {
-             receiptNumber = callPOSMethods.getReceiptID(Customer, rcQty, rcTotal); 
+             receiptNumber = callPOSMethods.getReceiptID(Customer, cashierName, rcQty, rcTotal); 
             txtRecieptNum.setText(String.valueOf(receiptNumber));
             jTextArea1.setText(jTextArea1 + "\n-reciept " + receiptNumber);
         }
@@ -428,6 +430,10 @@ public class POS extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCheckOutActionPerformed
 
+    private String getCashierNameForCurrentUser() {
+    // Add your logic here to fetch the cashier's name
+    return "John Doe"; // Replace with the actual logic
+}
     private void txtPayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPayActionPerformed
         // TODO add your handling code here:
          double paymentAmount = Double.parseDouble(txtPay.getText());
