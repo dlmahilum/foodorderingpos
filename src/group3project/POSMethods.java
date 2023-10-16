@@ -45,18 +45,19 @@ public class POSMethods {
     
 //-=-=-=-=-=-=-=-=-=-=-=
     
-    public int addNewOrder(int prodID, double prodPrice, int prodQty, double prodTotal){
+    public int addNewOrder(int odID, double odPrice, int odQty, double odTotal, int rID){
         int rowsAffected = 0;
-        String sqlQuery = "INSERT INTO tbl_order_details(fld_mid, fld_price, fld_quantity, fld_total_amount) VALUES (?,?,?,?);";
+        String sqlQuery = "INSERT INTO tbl_order_details(fld_mid, fld_price, fld_quantity, fld_total_amount, fld_rid) VALUES (?,?,?,?,?);";
         
         try {
             Connection conn = DriverManager.getConnection(address, userName, passWord);
             PreparedStatement stmt = conn.prepareStatement(sqlQuery);
             
-            stmt.setInt(1, prodID);
-            stmt.setDouble(2, prodPrice);
-            stmt.setInt(3, prodQty);
-            stmt.setDouble(4, prodTotal);
+            stmt.setInt(1, odID);
+            stmt.setDouble(2, odPrice);
+            stmt.setInt(3, odQty);
+            stmt.setDouble(4, odTotal);
+            stmt.setInt(5, rID);
             
             rowsAffected = stmt.executeUpdate();
             
@@ -71,7 +72,7 @@ public class POSMethods {
     
 //-=-=-=-=-=-=-=-=-=-=-=
     
-    public int addNewReciept(String Customer, String cashierName, int rcQty, double rcTotal){
+    public int addNewReceipt(String customer, String cashierName, int rcQty, double rcTotal){
         int rowsAffected = 0;
         String sqlQuery = "INSERT INTO tbl_receipt(fld_customer, fld_cashiername, fld_total_quantity, fld_receipt_total) VALUE (?,?,?,?);";
         
@@ -79,7 +80,7 @@ public class POSMethods {
             Connection conn = DriverManager.getConnection(address, userName, passWord);
             PreparedStatement stmt = conn.prepareStatement(sqlQuery);
             
-            stmt.setString(1, Customer);
+            stmt.setString(1, customer);
             stmt.setString(2, cashierName);
             stmt.setInt(3, rcQty);
             stmt.setDouble(4, rcTotal);
@@ -95,7 +96,7 @@ public class POSMethods {
         return rowsAffected;
     }
     
-    public int getRecieptID(String Customer, String cashierName, int rcQty, double rcTotal) {
+    public int getReceiptID(String Customer, String cashierName, int rcQty, double rcTotal) {
         int rcID = 0;
         String sqlQuery = "SELECT fld_rid FROM tbl_receipt WHERE fld_customer = ? AND fld_cashiername = ? AND fld_total_quantity = ? AND fld_receipt_total = ? ORDER BY fld_rid DESC;";
         
@@ -122,9 +123,5 @@ public class POSMethods {
         
         return rcID;
 
-    }
-
-    int getReceiptID(String Customer, String cashierName, int rcQty, double rcTotal) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

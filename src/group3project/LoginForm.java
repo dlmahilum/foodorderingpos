@@ -158,7 +158,7 @@ public class LoginForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-           String enteredUsername = txtUsername.getText();
+        String enteredUsername = txtUsername.getText();
         String enteredPassword = new String(txtPassword.getPassword());
 
         try {
@@ -179,7 +179,7 @@ public class LoginForm extends javax.swing.JFrame {
                         } else if (userType.equals("cashier")) {
                             JOptionPane.showMessageDialog(null, "Welcome, Cashier!");
                             // You can open another form for cashiers here
-                             POS callMethod = new POS();
+                            POS callMethod = new POS();
                             callMethod.setVisible(true);
                             dispose();
                         }
