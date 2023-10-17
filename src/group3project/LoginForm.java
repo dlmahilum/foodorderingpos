@@ -163,13 +163,14 @@ public class LoginForm extends javax.swing.JFrame {
         String enteredPassword = new String(txtPassword.getPassword());
 
         try {
-            String query = "SELECT fld_user_type FROM tbl_users WHERE fld_user_name = ? AND fld_password = ?";
+            String query = "SELECT fld_user_type, fld_full_name FROM tbl_users WHERE fld_user_name = ? AND fld_password = ?";
             try (PreparedStatement preparedStatement = cn.prepareStatement(query)) {
                 preparedStatement.setString(1, enteredUsername);
                 preparedStatement.setString(2, enteredPassword);
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
                     if (resultSet.next()) {
                         String userType = resultSet.getString("fld_user_type");
+                        String cashiername = resultSet.getString("fld_full_name");
                         
                         if (userType.equals("admin")) {
                             JOptionPane.showMessageDialog(null, "Welcome, Admin!");
@@ -181,6 +182,7 @@ public class LoginForm extends javax.swing.JFrame {
                             JOptionPane.showMessageDialog(null, "Welcome, Cashier!");
                             // You can open another form for cashiers here
                             POS callMethod = new POS();
+                            callMethod.setCashierName(cashiername);
                             callMethod.setVisible(true);
                             dispose();
                         }
