@@ -7,6 +7,9 @@ package group3project;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 /**
  *
@@ -421,17 +424,18 @@ public class POS extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btnCheckOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckOutActionPerformed
+
         String customer = txtCustomerName.getText();
         String cashierName = getCashierNameForCurrentUser();  
         int rcQty = Integer.parseInt(txtTotalQty.getText());
         double rcTotal = Double.parseDouble(txtTotalPrice.getText());
         int receiptNumber = 0;
-        POSMethods callG23Methods = new POSMethods();
+        POSMethods callPOS = new POSMethods();
         
         int result= 0;
-        result = callG23Methods.addNewReceipt(customer, cashierName, rcQty, rcTotal);
+        result = callPOS.addNewReceipt(customer, cashierName, rcQty, rcTotal);
         if (result == 1) {
-            receiptNumber = callG23Methods.getReceiptID(customer, cashierName, rcQty, rcTotal);
+            receiptNumber = callPOS.getReceiptID(customer, cashierName, rcQty, rcTotal);
             txtRecieptNum.setText(String.valueOf(receiptNumber));
             receiptRecorded.setText(receiptRecorded + "\n-reciept " + receiptNumber);
         }
@@ -443,9 +447,27 @@ public class POS extends javax.swing.JFrame {
                 double currentPrice = Double.parseDouble(tblForOrderRecord.getValueAt(i, 1).toString());  
                 int currentQTY = Integer.parseInt(tblForOrderRecord.getValueAt(i, 2).toString());
                 double currentTotal = Double.parseDouble(tblForOrderRecord.getValueAt(i, 3).toString());  
-                int orderRec = callG23Methods.addNewOrder(currentPID, currentPrice, currentQTY, currentTotal, receiptNumber);
+                int orderRec = callPOS.addNewOrder(currentPID, currentPrice, currentQTY, currentTotal, receiptNumber);
                 if (orderRec == 1) {
-                    receiptRecorded.setText(receiptRecorded + "\n-recorded " + i);
+                    LocalDateTime dateTimeNow = LocalDateTime.now();
+                    LocalDate dateNow = dateTimeNow.toLocalDate();
+                    LocalTime timeNow = dateTimeNow.toLocalTime();
+                    String rn = txtRecieptNum.getText();
+                    receiptRecorded.setText(receiptRecorded + "\n-recorded " + i + 
+                            "\n-----------------------------------------------------------------------" +
+                            "\n                               CASH RECEIPT                                " +
+                            "\n-----------------------------------------------------------------------" +
+                            "\n                             retail restaurant                             " + "\n" +
+                            "\n      #time                                     "+ timeNow +
+                            "\n      #data                                     "+ dateNow +        
+                            "\n      #cashier                                  " + cashierName +
+                            "\n-----------------------------------------------------------------------" +
+                            "\n      Customer Name:    "+customer+
+                            "\n      Receipt No.  " + rn +
+                            "\n      Product Quantity:       " +rcQty + 
+                            "\n      Total Amount:                           " + rcTotal + "  " + "\n" +
+                            "\n                        THANK YOU AND COME AGAIN!!!");
+                    
                 }
             }
         }
