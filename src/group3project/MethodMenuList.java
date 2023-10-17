@@ -170,4 +170,38 @@ public class MethodMenuList {
             tblModel.addRow(error);
         }
     }
+    
+    //Getting Summary
+    public void getSummary(JTable tableIn) {
+        DefaultTableModel tblModel = (DefaultTableModel) tableIn.getModel();
+        tblModel.setRowCount(0);
+        String sqlQuery = "SELECT t1.fld_mid , t1.fld_menu , COUNT(t1.fld_menu) AS \"Total Customers\" ," + 
+                "SUM(t1.fld_price) AS \"total price\" , SUM(t2.fld_quantity) AS \"total quantity\" ," + 
+                "SUM(t2.fld_total_amount) AS \"overall amount\" , t2.fld_dt FROM tbl_food_item AS t1 " + 
+                "JOIN tbl_order_details AS t2 ON t1.fld_mid = t2.fld_mid GROUP BY fld_mid;";
+        
+        try {
+            Connection conn = DriverManager.getConnection(address, userName, passWord);
+            PreparedStatement stmt = conn.prepareStatement(sqlQuery);
+            
+            ResultSet rs = stmt.executeQuery();
+            //result set starts with 1 or field name 
+            while (rs.next()) {
+                Object[] newRow = {
+                    rs.getInt(1)
+                    ,rs.getString(2)
+                    ,rs.getInt(3)
+                    ,rs.getDouble(4)
+                    ,rs.getInt(5)
+                    ,rs.getDouble(6)
+                    ,rs.getString(7)};
+                tblModel.addRow(newRow);
+            }
+            conn.close();
+        } catch (Exception e) {
+            Object[] error = new Object[7];
+            error[0] = "Connection error:\n" + e.getMessage();
+            tblModel.addRow(error);
+        }
+    }
 }

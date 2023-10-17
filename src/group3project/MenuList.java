@@ -31,6 +31,7 @@ public class MenuList extends javax.swing.JFrame {
         opSearchCmb = new javax.swing.JComboBox<>();
         searchTxt = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
+        btnSummary = new javax.swing.JButton();
         addmenuPanel = new javax.swing.JPanel();
         lbl_mname = new javax.swing.JLabel();
         menuTxt = new javax.swing.JTextField();
@@ -154,6 +155,15 @@ public class MenuList extends javax.swing.JFrame {
                 .addGap(13, 13, 13))
         );
 
+        btnSummary.setBackground(new java.awt.Color(51, 255, 102));
+        btnSummary.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnSummary.setText("SUMMARY");
+        btnSummary.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSummaryActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout menutablePanelLayout = new javax.swing.GroupLayout(menutablePanel);
         menutablePanel.setLayout(menutablePanelLayout);
         menutablePanelLayout.setHorizontalGroup(
@@ -163,17 +173,22 @@ public class MenuList extends javax.swing.JFrame {
                 .addGroup(menutablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 766, Short.MAX_VALUE)
                     .addGroup(menutablePanelLayout.createSequentialGroup()
-                        .addGroup(menutablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(menusearchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_Title))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(lbl_Title)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(menutablePanelLayout.createSequentialGroup()
+                        .addComponent(menusearchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSummary)))
                 .addContainerGap())
         );
         menutablePanelLayout.setVerticalGroup(
             menutablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menutablePanelLayout.createSequentialGroup()
                 .addGroup(menutablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_Title)
+                    .addGroup(menutablePanelLayout.createSequentialGroup()
+                        .addComponent(lbl_Title)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSummary))
                     .addGroup(menutablePanelLayout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addComponent(menusearchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -229,7 +244,7 @@ public class MenuList extends javax.swing.JFrame {
                         .addComponent(lbl_ID)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblmID, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE))
                     .addGroup(addmenuPanelLayout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
@@ -252,7 +267,7 @@ public class MenuList extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(addmenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(statCmb, 0, 1, Short.MAX_VALUE)
-                    .addComponent(categoryCmb, 0, 100, Short.MAX_VALUE))
+                    .addComponent(categoryCmb, 0, 108, Short.MAX_VALUE))
                 .addGap(19, 19, 19))
         );
         addmenuPanelLayout.setVerticalGroup(
@@ -649,6 +664,13 @@ public class MenuList extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_opSearchCmbActionPerformed
 
+    private void btnSummaryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSummaryActionPerformed
+        // TODO add your handling code here:
+        Summary callMethod = new Summary();
+        callMethod.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnSummaryActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -713,6 +735,7 @@ public class MenuList extends javax.swing.JFrame {
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnSearch;
+    private javax.swing.JButton btnSummary;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JButton btn_mu;
     private javax.swing.JButton btnedit;
