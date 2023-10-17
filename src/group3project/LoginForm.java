@@ -47,6 +47,7 @@ public class LoginForm extends javax.swing.JFrame {
         txtPassword = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(204, 0, 51));
         setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 4));

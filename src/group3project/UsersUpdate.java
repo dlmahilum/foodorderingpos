@@ -86,10 +86,10 @@ public class UsersUpdate extends javax.swing.JFrame {
 
         usersearchPanel.setBackground(new java.awt.Color(255, 255, 0));
 
-        opSearchCmb.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        opSearchCmb.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         opSearchCmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Full Name", "Username" }));
 
-        searchTxt.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        searchTxt.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         searchTxt.setToolTipText("");
         searchTxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -98,7 +98,7 @@ public class UsersUpdate extends javax.swing.JFrame {
         });
 
         btnSearch.setBackground(new java.awt.Color(204, 204, 204));
-        btnSearch.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnSearch.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnSearch.setText("Search");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -124,7 +124,7 @@ public class UsersUpdate extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, usersearchPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(usersearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+                    .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(searchTxt)
                     .addComponent(opSearchCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(13, 13, 13))
@@ -137,10 +137,8 @@ public class UsersUpdate extends javax.swing.JFrame {
             .addGroup(usersTablePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(usersTablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 816, Short.MAX_VALUE)
-                    .addGroup(usersTablePanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(usersearchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 903, Short.MAX_VALUE)
+                    .addComponent(usersearchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(usersTablePanelLayout.createSequentialGroup()
                         .addComponent(lbl_Title)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -153,31 +151,37 @@ public class UsersUpdate extends javax.swing.JFrame {
                 .addGap(7, 7, 7)
                 .addComponent(usersearchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         adduserPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 0, 0), 5));
 
-        lbluname.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbluname.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbluname.setText("Username:");
 
-        lblpswd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        unameTxt.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+
+        lblpswd.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblpswd.setText("Password:");
 
-        lblutype.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        pwdTxt.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+
+        lblutype.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblutype.setText("User Type");
 
-        utypeCmb.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        utypeCmb.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         utypeCmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select One", "admin", "cashier" }));
 
-        lbluID.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lbluID.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbluID.setText("0");
 
-        lblfullname.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblfullname.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblfullname.setText("Full Name:");
 
-        lbluid.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        flnTxt.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+
+        lbluid.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbluid.setText("User ID: ");
 
         javax.swing.GroupLayout adduserPanelLayout = new javax.swing.GroupLayout(adduserPanel);
@@ -235,14 +239,14 @@ public class UsersUpdate extends javax.swing.JFrame {
                         .addComponent(lblpswd))
                     .addGroup(adduserPanelLayout.createSequentialGroup()
                         .addGap(11, 11, 11)
-                        .addComponent(pwdTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)))
+                        .addComponent(pwdTxt)))
                 .addContainerGap())
         );
 
         userbtnPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 0, 0), 3));
 
         btnAdd.setBackground(new java.awt.Color(0, 255, 0));
-        btnAdd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnAdd.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnAdd.setText("Add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -251,7 +255,7 @@ public class UsersUpdate extends javax.swing.JFrame {
         });
 
         btnedit.setBackground(new java.awt.Color(255, 255, 51));
-        btnedit.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnedit.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnedit.setText("Edit User Info");
         btnedit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -260,6 +264,7 @@ public class UsersUpdate extends javax.swing.JFrame {
         });
 
         btnCancel.setBackground(new java.awt.Color(255, 0, 0));
+        btnCancel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnCancel.setForeground(new java.awt.Color(255, 255, 255));
         btnCancel.setText("X");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -269,7 +274,7 @@ public class UsersUpdate extends javax.swing.JFrame {
         });
 
         btn_mml.setBackground(new java.awt.Color(0, 255, 255));
-        btn_mml.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btn_mml.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_mml.setText("Modify Menu List");
         btn_mml.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -278,7 +283,7 @@ public class UsersUpdate extends javax.swing.JFrame {
         });
 
         btnDelete.setBackground(new java.awt.Color(255, 51, 0));
-        btnDelete.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnDelete.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -287,7 +292,7 @@ public class UsersUpdate extends javax.swing.JFrame {
         });
 
         btnUpdate.setBackground(new java.awt.Color(0, 255, 255));
-        btnUpdate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnUpdate.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -311,7 +316,7 @@ public class UsersUpdate extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userbtnPanelLayout.createSequentialGroup()
-                        .addComponent(btn_mml, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                        .addComponent(btn_mml, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())

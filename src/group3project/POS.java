@@ -23,6 +23,12 @@ public class POS extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblProductList = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
+        opSearchCmb = new javax.swing.JComboBox<>();
+        searchTxt = new javax.swing.JTextField();
+        btnSearch = new javax.swing.JButton();
+        opSearchCmb1 = new javax.swing.JComboBox<>();
+        searchTxt1 = new javax.swing.JTextField();
+        btnSearch1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtQty = new javax.swing.JTextField();
@@ -43,6 +49,7 @@ public class POS extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         txtRemove = new javax.swing.JButton();
         btnCheckOut = new javax.swing.JButton();
+        btnClearAll = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         txtRecieptNum = new javax.swing.JLabel();
@@ -50,6 +57,7 @@ public class POS extends javax.swing.JFrame {
         txtCustomerName = new javax.swing.JTextField();
         Cashier = new javax.swing.JLabel();
         jLabelCashier = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -85,8 +93,53 @@ public class POS extends javax.swing.JFrame {
             tblProductList.getColumnModel().getColumn(4).setResizable(false);
         }
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel5.setText("Point of Sale (POS)");
+        jLabel5.setFont(new java.awt.Font("Corbel", 1, 24)); // NOI18N
+        jLabel5.setText("POINT OF SALE (POS)");
+
+        opSearchCmb.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        opSearchCmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Menu", "Menu Code", "Category" }));
+
+        searchTxt.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        searchTxt.setToolTipText("");
+        searchTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchTxtKeyReleased(evt);
+            }
+        });
+
+        btnSearch.setBackground(new java.awt.Color(204, 204, 204));
+        btnSearch.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnSearch.setText("Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
+
+        opSearchCmb1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        opSearchCmb1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Menu", "Menu Code", "Category" }));
+        opSearchCmb1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opSearchCmb1ActionPerformed(evt);
+            }
+        });
+
+        searchTxt1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        searchTxt1.setToolTipText("");
+        searchTxt1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchTxt1KeyReleased(evt);
+            }
+        });
+
+        btnSearch1.setBackground(new java.awt.Color(204, 204, 204));
+        btnSearch1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btnSearch1.setText("Search");
+        btnSearch1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearch1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -94,21 +147,51 @@ public class POS extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 677, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 677, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(opSearchCmb1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(searchTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSearch1)))
+                .addContainerGap())
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jLabel5)
-                .addGap(263, 263, 263))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(152, 152, 152)
+                    .addComponent(opSearchCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(searchTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(btnSearch)
+                    .addGap(152, 152, 152)))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel5)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(6, 6, 6)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSearch1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(searchTxt1)
+                    .addComponent(opSearchCmb1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(157, 157, 157)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+                        .addComponent(searchTxt)
+                        .addComponent(opSearchCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(158, 158, 158)))
         );
 
         jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
@@ -239,7 +322,7 @@ public class POS extends javax.swing.JFrame {
                     .addComponent(txtTotalQty)
                     .addComponent(txtBalance, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
                     .addComponent(txtPay))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -283,6 +366,15 @@ public class POS extends javax.swing.JFrame {
             }
         });
 
+        btnClearAll.setBackground(new java.awt.Color(255, 102, 51));
+        btnClearAll.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btnClearAll.setText("Clear");
+        btnClearAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearAllActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -292,13 +384,16 @@ public class POS extends javax.swing.JFrame {
                 .addComponent(txtRemove, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addComponent(btnCheckOut, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnClearAll, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                 .addComponent(txtRemove, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnCheckOut))
+                .addComponent(btnCheckOut)
+                .addComponent(btnClearAll, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jPanel6.setBackground(new java.awt.Color(255, 0, 0));
@@ -335,18 +430,16 @@ public class POS extends javax.swing.JFrame {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtRecieptNum, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(txtRecieptNum, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addComponent(Cashier)
-                                .addGap(17, 17, 17)
-                                .addComponent(jLabelCashier)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtCustomerName)))
-                .addContainerGap())
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtCustomerName))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(Cashier)
+                        .addGap(17, 17, 17)
+                        .addComponent(jLabelCashier)))
+                .addGap(64, 64, 64))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -354,18 +447,24 @@ public class POS extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtRecieptNum)
                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addComponent(txtCustomerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtCustomerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Cashier)
                     .addComponent(jLabelCashier)))
         );
+
+        jButton1.setBackground(new java.awt.Color(255, 153, 153));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton1.setText("Logout");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -375,42 +474,49 @@ public class POS extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 661, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(226, 226, 226)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)
-                        .addGap(4, 4, 4)))
-                .addContainerGap())
+                        .addComponent(jScrollPane3)
+                        .addContainerGap())
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 661, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(191, 191, 191)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                                .addGap(19, 19, 19))))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE))
-                    .addComponent(jScrollPane3))
+                    .addComponent(jScrollPane3)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
+                        .addGap(18, 18, 18)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(13, 13, 13)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(84, 84, 84)))
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -434,6 +540,9 @@ public class POS extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddToOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddToOrderActionPerformed
+         // Disable the btnClearAll button
+        btnClearAll.setEnabled(false);
+        
         
         Object[] forTblPOut = new Object[5];
         forTblPOut[0] = tblProductList.getValueAt(tblProductList.getSelectedRow(), 0);
@@ -468,12 +577,14 @@ public class POS extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btnCheckOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckOutActionPerformed
-
-        String customer = txtCustomerName.getText();
-        if (customer.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Please enter the customer name.");
-        return;
-    }
+ 
+         String customer = txtCustomerName.getText();
+            if (customer.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please enter the customer name.");
+            return;
+        }
+          
+       
         String cashierName = getCashierNameForCurrentUser();  
         int rcQty = Integer.parseInt(txtTotalQty.getText());
         double rcTotal = Double.parseDouble(txtTotalPrice.getText());
@@ -526,7 +637,8 @@ public class POS extends javax.swing.JFrame {
             }
         }
         
-        
+        // Enable the btnClearAll button
+    btnClearAll.setEnabled(true);
     }//GEN-LAST:event_btnCheckOutActionPerformed
 
     private void txtRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRemoveActionPerformed
@@ -534,12 +646,28 @@ public class POS extends javax.swing.JFrame {
     if (selectedRow == -1) {
         JOptionPane.showMessageDialog(this, "Please select an order to remove.");
         return; // No row selected, exit the method
-    }
+    }  
+        int removedQuantity = Integer.parseInt(tblForOrderRecord.getValueAt(selectedRow, 2).toString());
+        double removedTotal = Double.parseDouble(tblForOrderRecord.getValueAt(selectedRow, 3).toString());
 
     // Remove the selected row from the table
     DefaultTableModel tblModel = (DefaultTableModel) tblForOrderRecord.getModel();
     tblModel.removeRow(selectedRow);
-       
+
+    // Update txtTotalQty and txtTotalPrice
+    int currentTotalQuantity = Integer.parseInt(txtTotalQty.getText());
+    double currentTotalPrice = Double.parseDouble(txtTotalPrice.getText());
+    
+    currentTotalQuantity -= removedQuantity;
+    currentTotalPrice -= removedTotal;
+
+    txtTotalQty.setText(String.valueOf(currentTotalQuantity));
+    txtTotalPrice.setText(String.format("%.2f", currentTotalPrice));
+    
+      // Clear txtPay and txtBalance
+    txtPay.setText("");
+    txtBalance.setText("");
+    
     }//GEN-LAST:event_txtRemoveActionPerformed
 
     private void txtPayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPayActionPerformed
@@ -556,6 +684,69 @@ public class POS extends javax.swing.JFrame {
     private void txtBalanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBalanceActionPerformed
       
     }//GEN-LAST:event_txtBalanceActionPerformed
+
+    private void btnClearAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearAllActionPerformed
+        DefaultTableModel tblModel = (DefaultTableModel) tblForOrderRecord.getModel();
+    tblModel.setRowCount(0);
+
+    // Clear text fields and variables
+    txtTotalQty.setText("0");
+    txtTotalPrice.setText("0.00");
+    txtPay.setText("");
+    txtBalance.setText("");
+    txtRecieptNum.setText("0s");
+    txtCustomerName.setText("");
+    receiptRecorded.setText("");
+    
+    // Enable the btnClearAll button
+    btnClearAll.setEnabled(true);
+    }//GEN-LAST:event_btnClearAllActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        int result = JOptionPane.showConfirmDialog(this, "Do you want to logout?", "", JOptionPane.YES_NO_OPTION
+                , JOptionPane.WARNING_MESSAGE);
+        
+        if (result == JOptionPane.YES_OPTION){
+            LoginForm callLogOut = new LoginForm();
+            callLogOut.setVisible(true);
+            dispose();
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void searchTxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTxtKeyReleased
+        // TODO add your handling code here:
+        String refColumn = opSearchCmb1.getSelectedItem().toString();
+        String refValue = searchTxt1.getText();
+
+        MethodMenuList callMethod = new MethodMenuList();
+        callMethod.getAllRows(tblProductList, refColumn, refValue);
+    }//GEN-LAST:event_searchTxtKeyReleased
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+
+        String refColumn = opSearchCmb1.getSelectedItem().toString();
+        String refValue = searchTxt1.getText();
+
+        MethodMenuList callMethod = new MethodMenuList();
+        callMethod.getAllRows(tblProductList, refColumn, refValue);
+    }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void searchTxt1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTxt1KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchTxt1KeyReleased
+
+    private void btnSearch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearch1ActionPerformed
+        String refColumn = opSearchCmb.getSelectedItem().toString();
+        String refValue = searchTxt.getText();
+                           
+        MethodMenuList callMethod = new MethodMenuList();
+        callMethod.getAllRows(tblProductList, refColumn, refValue);        
+    }//GEN-LAST:event_btnSearch1ActionPerformed
+
+    private void opSearchCmb1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opSearchCmb1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_opSearchCmb1ActionPerformed
 
     private String getCashierNameForCurrentUser() {
     // Add your logic here to fetch the cashier's name
@@ -607,6 +798,10 @@ public class POS extends javax.swing.JFrame {
     private javax.swing.JLabel Cashier;
     private javax.swing.JButton btnAddToOrder;
     private javax.swing.JButton btnCheckOut;
+    private javax.swing.JButton btnClearAll;
+    private javax.swing.JButton btnSearch;
+    private javax.swing.JButton btnSearch1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -625,7 +820,11 @@ public class POS extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JComboBox<String> opSearchCmb;
+    private javax.swing.JComboBox<String> opSearchCmb1;
     private javax.swing.JTextArea receiptRecorded;
+    private javax.swing.JTextField searchTxt;
+    private javax.swing.JTextField searchTxt1;
     private javax.swing.JTable tblForOrderRecord;
     private javax.swing.JTable tblProductList;
     private javax.swing.JTextField txtBalance;
