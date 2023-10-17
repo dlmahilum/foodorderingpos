@@ -100,11 +100,21 @@ public class MenuList extends javax.swing.JFrame {
 
         menusearchPanel.setBackground(new java.awt.Color(255, 255, 0));
 
-        opSearchCmb.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        opSearchCmb.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         opSearchCmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Menu", "Menu Code", "Category" }));
+        opSearchCmb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opSearchCmbActionPerformed(evt);
+            }
+        });
 
-        searchTxt.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        searchTxt.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         searchTxt.setToolTipText("");
+        searchTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchTxtActionPerformed(evt);
+            }
+        });
         searchTxt.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 searchTxtKeyReleased(evt);
@@ -112,7 +122,7 @@ public class MenuList extends javax.swing.JFrame {
         });
 
         btnSearch.setBackground(new java.awt.Color(204, 204, 204));
-        btnSearch.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnSearch.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnSearch.setText("Search");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -138,7 +148,7 @@ public class MenuList extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, menusearchPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(menusearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+                    .addComponent(btnSearch, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(searchTxt)
                     .addComponent(opSearchCmb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(13, 13, 13))
@@ -151,10 +161,11 @@ public class MenuList extends javax.swing.JFrame {
             .addGroup(menutablePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(menutablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 765, Short.MAX_VALUE)
-                    .addComponent(menusearchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 766, Short.MAX_VALUE)
                     .addGroup(menutablePanelLayout.createSequentialGroup()
-                        .addComponent(lbl_Title)
+                        .addGroup(menutablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(menusearchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_Title))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -167,36 +178,44 @@ public class MenuList extends javax.swing.JFrame {
                         .addGap(39, 39, 39)
                         .addComponent(menusearchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(12, 12, 12)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         addmenuPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 0, 0), 5));
 
-        lbl_mname.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbl_mname.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbl_mname.setText("Menu Name:");
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        menuTxt.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setText("Price:");
 
-        lbl_category.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        priceDouble.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+
+        lbl_category.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbl_category.setText("Category: ");
 
-        lbl_status.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbl_status.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbl_status.setText("Status:");
 
+        statCmb.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         statCmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select One", "Available", "Not Available" }));
         statCmb.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        categoryCmb.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         categoryCmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select One", "Breakfast", "Lunch", "Dinner", "Drinks", "Dessert", "Snacks" }));
 
-        lblmID.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        lblmID.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblmID.setText("0");
 
-        lbl_mcode.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbl_mcode.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbl_mcode.setText("Menu Code:");
 
-        lbl_ID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        mcodeTxt.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+
+        lbl_ID.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbl_ID.setText("Menu ID: ");
 
         javax.swing.GroupLayout addmenuPanelLayout = new javax.swing.GroupLayout(addmenuPanel);
@@ -210,28 +229,30 @@ public class MenuList extends javax.swing.JFrame {
                         .addComponent(lbl_ID)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblmID, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE))
                     .addGroup(addmenuPanelLayout.createSequentialGroup()
-                        .addComponent(lbl_mcode)
-                        .addGap(10, 10, 10)
-                        .addComponent(mcodeTxt)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(addmenuPanelLayout.createSequentialGroup()
-                        .addGroup(addmenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_mname)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(addmenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(menuTxt)
-                            .addComponent(priceDouble))
-                        .addGap(15, 15, 15)))
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(priceDouble)
+                        .addGap(75, 75, 75))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addmenuPanelLayout.createSequentialGroup()
+                        .addGroup(addmenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(addmenuPanelLayout.createSequentialGroup()
+                                .addComponent(lbl_mcode)
+                                .addGap(10, 10, 10)
+                                .addComponent(mcodeTxt))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, addmenuPanelLayout.createSequentialGroup()
+                                .addComponent(lbl_mname)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(menuTxt)))
+                        .addGap(24, 24, 24)))
                 .addGroup(addmenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lbl_category)
                     .addComponent(lbl_status))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(addmenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(statCmb, 0, 1, Short.MAX_VALUE)
-                    .addComponent(categoryCmb, 0, 1, Short.MAX_VALUE))
+                    .addComponent(categoryCmb, 0, 100, Short.MAX_VALUE))
                 .addGap(19, 19, 19))
         );
         addmenuPanelLayout.setVerticalGroup(
@@ -241,7 +262,7 @@ public class MenuList extends javax.swing.JFrame {
                 .addGroup(addmenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_ID)
                     .addComponent(lblmID))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(addmenuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(mcodeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_category)
@@ -263,6 +284,7 @@ public class MenuList extends javax.swing.JFrame {
         menubtnPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 0, 0), 3));
 
         btnCancel.setBackground(new java.awt.Color(255, 0, 0));
+        btnCancel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnCancel.setForeground(new java.awt.Color(255, 255, 255));
         btnCancel.setText("X");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -272,7 +294,7 @@ public class MenuList extends javax.swing.JFrame {
         });
 
         btnDelete.setBackground(new java.awt.Color(255, 51, 0));
-        btnDelete.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnDelete.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -281,7 +303,7 @@ public class MenuList extends javax.swing.JFrame {
         });
 
         btnUpdate.setBackground(new java.awt.Color(0, 255, 255));
-        btnUpdate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnUpdate.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -290,7 +312,7 @@ public class MenuList extends javax.swing.JFrame {
         });
 
         btnLogout.setBackground(new java.awt.Color(255, 0, 0));
-        btnLogout.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnLogout.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnLogout.setText("Log Out");
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -299,7 +321,7 @@ public class MenuList extends javax.swing.JFrame {
         });
 
         btn_mu.setBackground(new java.awt.Color(51, 255, 255));
-        btn_mu.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btn_mu.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btn_mu.setText("Modify Users");
         btn_mu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -308,7 +330,7 @@ public class MenuList extends javax.swing.JFrame {
         });
 
         btnAdd.setBackground(new java.awt.Color(0, 255, 0));
-        btnAdd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnAdd.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnAdd.setText("Add");
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -317,7 +339,7 @@ public class MenuList extends javax.swing.JFrame {
         });
 
         btnedit.setBackground(new java.awt.Color(255, 255, 51));
-        btnedit.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnedit.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnedit.setText("Edit List");
         btnedit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -346,7 +368,7 @@ public class MenuList extends javax.swing.JFrame {
                     .addGroup(menubtnPanelLayout.createSequentialGroup()
                         .addComponent(btnedit, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE))
+                        .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(btnAdd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -618,6 +640,14 @@ public class MenuList extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void searchTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchTxtActionPerformed
+
+    private void opSearchCmbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opSearchCmbActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_opSearchCmbActionPerformed
 
     /**
      * @param args the command line arguments
