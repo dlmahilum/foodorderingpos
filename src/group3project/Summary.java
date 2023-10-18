@@ -229,6 +229,13 @@ public class Summary extends javax.swing.JFrame {
         // TODO add your handling code here:
         MethodMenuList callMethod = new MethodMenuList();
         callMethod.getSummary(summaryTable);
+        
+        double overAllTtl = 0;
+        for (int i = 0; i < summaryTable.getRowCount(); i++){
+            overAllTtl += Double.parseDouble(summaryTable.getValueAt(i, 5).toString());
+        }
+ 
+        txtoverallsales.setText(String.format("%.2f", overAllTtl));
     }//GEN-LAST:event_formWindowOpened
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -239,22 +246,11 @@ public class Summary extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void searchTxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTxtKeyReleased
-        // TODO add your handling code here:
-        String refColumn = opSearchCmb1.getSelectedItem().toString();
-        String refValue = txtSearch.getText();
-
-        MethodMenuList callMethod = new MethodMenuList();
-        callMethod.getAllRowsSummary(summaryTable, refColumn, refValue);
 
     }//GEN-LAST:event_searchTxtKeyReleased
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
 
-        String refColumn = opSearchCmb1.getSelectedItem().toString();
-        String refValue = txtSearch.getText();
-
-        MethodMenuList callMethod = new MethodMenuList();
-        callMethod.getAllRowsSummary(summaryTable, refColumn, refValue);
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
@@ -264,6 +260,13 @@ public class Summary extends javax.swing.JFrame {
 
         MethodMenuList callMethod = new MethodMenuList();
         callMethod.getAllRowsSummary(summaryTable, refColumn, refValue);
+        
+        double overAllTtl = 0;
+        for (int i = 0; i < summaryTable.getRowCount(); i++){
+            overAllTtl += Double.parseDouble(summaryTable.getValueAt(i, 5).toString());
+        }
+ 
+        txtsearchsales.setText(String.format("%.2f", overAllTtl));
 
     }//GEN-LAST:event_txtSearchKeyReleased
 
@@ -274,6 +277,13 @@ public class Summary extends javax.swing.JFrame {
 
         MethodMenuList callMethod = new MethodMenuList();
         callMethod.getAllRowsSummary(summaryTable, refColumn, refValue);
+        
+        double overAllTtl = 0;
+        for (int i = 0; i < summaryTable.getRowCount(); i++){
+            overAllTtl += Double.parseDouble(summaryTable.getValueAt(i, 5).toString());
+        }
+ 
+        txtsearchsales.setText(String.format("%.2f", overAllTtl));
     }//GEN-LAST:event_btnSearch1ActionPerformed
 
     /**

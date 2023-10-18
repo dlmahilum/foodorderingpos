@@ -584,9 +584,9 @@ public class POS extends javax.swing.JFrame {
                 // JOptionPane.showMessageDialog(this, "awooo");
                 int currentPID = Integer.parseInt(tblForOrderRecord.getValueAt(i, 0).toString());
                 // Append the currentPID to the productIDs string
-            if (i > 0) {
-                productIDs.append(", ");
-               
+                if (i > 0) {
+                    productIDs.append(", ");
+                
             }
             productIDs.append(currentPID);
             double currentPrice = Double.parseDouble(tblForOrderRecord.getValueAt(i, 1).toString());  
