@@ -240,40 +240,40 @@ public class Summary extends javax.swing.JFrame {
 
     private void searchTxtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTxtKeyReleased
         // TODO add your handling code here:
-        String refColumn = opSearchCmb.getSelectedItem().toString();
-        String refValue = searchTxt.getText();
+        String refColumn = opSearchCmb1.getSelectedItem().toString();
+        String refValue = txtSearch.getText();
 
         MethodMenuList callMethod = new MethodMenuList();
-        callMethod.getAllRows(summaryTable, refColumn, refValue);
+        callMethod.getAllRowsSummary(summaryTable, refColumn, refValue);
 
     }//GEN-LAST:event_searchTxtKeyReleased
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
 
-        String refColumn = opSearchCmb.getSelectedItem().toString();
-        String refValue = searchTxt.getText();
+        String refColumn = opSearchCmb1.getSelectedItem().toString();
+        String refValue = txtSearch.getText();
 
         MethodMenuList callMethod = new MethodMenuList();
-        callMethod.getAllRows(summaryTable, refColumn, refValue);
+        callMethod.getAllRowsSummary(summaryTable, refColumn, refValue);
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
         // TODO add your handling code here:
-        String refColumn = opSearchCmb.getSelectedItem().toString();
-        String refValue = searchTxt.getText();
+        String refColumn = opSearchCmb1.getSelectedItem().toString();
+        String refValue = txtSearch.getText();
 
         MethodMenuList callMethod = new MethodMenuList();
-        callMethod.getAllRows(summaryTable, refColumn, refValue);
+        callMethod.getAllRowsSummary(summaryTable, refColumn, refValue);
 
     }//GEN-LAST:event_txtSearchKeyReleased
 
     private void btnSearch1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearch1ActionPerformed
 
-        String refColumn = opSearchCmb.getSelectedItem().toString();
-        String refValue = searchTxt.getText();
+        String refColumn = opSearchCmb1.getSelectedItem().toString();
+        String refValue = txtSearch.getText();
 
         MethodMenuList callMethod = new MethodMenuList();
-        callMethod.getAllRows(summaryTable, refColumn, refValue);
+        callMethod.getAllRowsSummary(summaryTable, refColumn, refValue);
     }//GEN-LAST:event_btnSearch1ActionPerformed
 
     /**

@@ -702,8 +702,8 @@ public class POS extends javax.swing.JFrame {
         String refColumn = opSearchCmb.getSelectedItem().toString();
         String refValue = searchTxt.getText();
 
-        MethodMenuList callMethod = new MethodMenuList();
-        callMethod.getAllRows(tblProductList, refColumn, refValue);
+        POSMethods callMethod= new POSMethods();
+        callMethod.getAllRowsPOS(tblProductList, refColumn, refValue);
     
     }//GEN-LAST:event_searchTxtKeyReleased
 
@@ -712,8 +712,8 @@ public class POS extends javax.swing.JFrame {
         String refColumn = opSearchCmb.getSelectedItem().toString();
         String refValue = searchTxt.getText();
 
-        MethodMenuList callMethod = new MethodMenuList();
-        callMethod.getAllRows(tblProductList, refColumn, refValue);
+        POSMethods callMethod = new POSMethods();
+        callMethod.getAllRowsPOS(tblProductList, refColumn, refValue);
     }//GEN-LAST:event_btnSearchActionPerformed
 
     /**

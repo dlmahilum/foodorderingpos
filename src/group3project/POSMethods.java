@@ -124,6 +124,53 @@ public class POSMethods {
         return rcID;
 
     }
+    public void getAllRowsPOS(JTable tableIn,String refColumn, String refValue) {
+        DefaultTableModel tblModel = (DefaultTableModel) tableIn.getModel();
+        tblModel.setRowCount(0);
+        String searchField = "";
+        String searchValue = "%"+refValue+"%";
+        // yung mga case ay yung nasa pilian na combo box
+        switch (refColumn) {
+            case "Menu":
+                searchField = "fld_menu";
+                break;
+            case "Menu Code":
+                searchField = "fld_code";
+                break;
+            case "Category":
+                searchField = "fld_cname";
+                break;
+        }
+        
+        String sqlQuery = String.format("SELECT * FROM tbl_food_item"
+                + " WHERE fld_status = \"Available\" && LOWER(%s) LIKE LOWER(?) ;",searchField);
+        
+        try {
+            Connection conn = DriverManager.getConnection(address, userName, passWord);
+            PreparedStatement stmt = conn.prepareStatement(sqlQuery);
+            //lalagyan ng laman yung ? placeholder
+            stmt.setString(1, searchValue);
+            
+            ResultSet rs = stmt.executeQuery();
+            //result set starts with 1 or field name 
+            while (rs.next()) {
+                Object[] newRow = {
+                    rs.getInt(1)
+                    ,rs.getString(2)
+                    ,rs.getString(3)
+                    ,rs.getDouble(4)
+                    ,rs.getString(5)
+                    ,rs.getString(6)
+                    ,rs.getString(7)};
+                tblModel.addRow(newRow);
+            }
+            conn.close();
+        } catch (Exception e) {
+            Object[] error = new Object[7];
+            error[0] = "Connection error:\n" + e.getMessage();
+            tblModel.addRow(error);
+        }
+    }
 }
     
 

@@ -177,9 +177,9 @@ public class MethodMenuList {
         DefaultTableModel tblModel = (DefaultTableModel) tableIn.getModel();
         tblModel.setRowCount(0);
          String sqlQuery = "SELECT fi.fld_mid, fi.fld_code, fi.fld_menu, fi.fld_price, "
-                 + "od.fld_quantity AS fld_sold_out, od.fld_total_amount AS fld_total_sales, od.fld_dt AS fld_date "
+                 + "SUM(od.fld_quantity) AS fld_sold_out, SUM(od.fld_total_amount) AS fld_total_sales, od.fld_dt AS fld_date "
                  + "FROM tbl_food_item fi "
-                 + "JOIN tbl_order_details od ON fi.fld_mid = od.fld_mid";
+                 + "JOIN tbl_order_details od ON fi.fld_mid = od.fld_mid GROUP BY fld_mid;";
 
         
         try {
@@ -191,6 +191,59 @@ public class MethodMenuList {
             while (rs.next()) {
                 Object[] newRow = {
                     rs.getInt(1)
+                    ,rs.getString(2)
+                    ,rs.getString(3)
+                    ,rs.getDouble(4)
+                    ,rs.getInt(5)
+                    ,rs.getDouble(6)
+                    ,rs.getString(7)};
+                tblModel.addRow(newRow);
+            }
+            conn.close();
+        } catch (Exception e) {
+            Object[] error = new Object[7];
+            error[0] = "Connection error:\n" + e.getMessage();
+            tblModel.addRow(error);
+        }
+    }
+    
+    //SearchSummary
+    public void getAllRowsSummary(JTable tableIn,String refColumn, String refValue) {
+        DefaultTableModel tblModel = (DefaultTableModel) tableIn.getModel();
+        tblModel.setRowCount(0);
+        String searchField = "";
+        String searchValue = "%"+refValue+"%";
+        // yung mga case ay yung nasa pilian na combo box
+        switch (refColumn) {
+            case "Menu":
+                searchField = "fld_menu";
+                break;
+            case "Menu Code":
+                searchField = "fld_code";
+                break;
+            case "Date":
+                searchField = "fld_dt";
+                break;
+        }
+        
+        String sqlQuery = String.format("SELECT fi.fld_mid, fi.fld_code, fi.fld_menu, fi.fld_price, "
+                 + "od.fld_quantity AS fld_sold_out, od.fld_total_amount AS fld_total_sales, od.fld_dt AS fld_date "
+                 + "FROM tbl_food_item fi "
+                 + "JOIN tbl_order_details od ON fi.fld_mid = od.fld_mid"
+                + " WHERE LOWER(%s) LIKE LOWER(?) GROUP BY fld_mid;",searchField);
+        
+        
+        try {
+            Connection conn = DriverManager.getConnection(address, userName, passWord);
+            PreparedStatement stmt = conn.prepareStatement(sqlQuery);
+            //lalagyan ng laman yung ? placeholder
+            stmt.setString(1, searchValue);
+            
+            ResultSet rs = stmt.executeQuery();
+            //result set starts with 1 or field name 
+            while (rs.next()) {
+                Object[] newRow = {
+                     rs.getInt(1)
                     ,rs.getString(2)
                     ,rs.getString(3)
                     ,rs.getDouble(4)
