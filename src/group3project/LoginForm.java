@@ -170,19 +170,19 @@ public class LoginForm extends javax.swing.JFrame {
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
                     if (resultSet.next()) {
                         String userType = resultSet.getString("fld_user_type");
-                        String cashiername = resultSet.getString("fld_full_name");
+                        String fullName = resultSet.getString("fld_full_name");
                         
                         if (userType.equals("admin")) {
-                            JOptionPane.showMessageDialog(null, "Welcome, Admin!");
+                             JOptionPane.showMessageDialog(null, "Welcome, " + fullName + "!");
                             // You can open another form for the admin here
                             MenuList callMethod = new MenuList();
                             callMethod.setVisible(true);
                             dispose();
                         } else if (userType.equals("cashier")) {
-                            JOptionPane.showMessageDialog(null, "Welcome, Cashier!");
+                             JOptionPane.showMessageDialog(null, "Welcome, " + fullName + "!");
                             // You can open another form for cashiers here
                             POS callMethod = new POS();
-                            callMethod.setCashierName(cashiername);
+                            callMethod.setCashierName(fullName);
                             callMethod.setVisible(true);
                             dispose();
                         }

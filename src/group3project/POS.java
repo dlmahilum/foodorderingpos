@@ -557,7 +557,6 @@ public class POS extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please enter the customer name.");
             return;
         }
-          
        
         String cashierName = jLabelCashier.getText();  
         int rcQty = Integer.parseInt(txtTotalQty.getText());
@@ -579,9 +578,18 @@ public class POS extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Receipt " + receiptNumber + "\nBalance: " + String.format("%.2f", balance));
         if (receiptNumber > 0) {
             for(int i = 0; i < tblForOrderRecord.getRowCount(); i++){
-    //        JOptionPane.showMessageDialog(this, "awooo");
+                
+                // Initialize a string to store the product IDs
+                 StringBuilder productIDs = new StringBuilder();
+                // JOptionPane.showMessageDialog(this, "awooo");
                 int currentPID = Integer.parseInt(tblForOrderRecord.getValueAt(i, 0).toString());
-                double currentPrice = Double.parseDouble(tblForOrderRecord.getValueAt(i, 1).toString());  
+                // Append the currentPID to the productIDs string
+            if (i > 0) {
+                productIDs.append(", ");
+               
+            }
+            productIDs.append(currentPID);
+            double currentPrice = Double.parseDouble(tblForOrderRecord.getValueAt(i, 1).toString());  
                 int currentQTY = Integer.parseInt(tblForOrderRecord.getValueAt(i, 2).toString());
                 double currentTotal = Double.parseDouble(tblForOrderRecord.getValueAt(i, 3).toString());  
                 int orderRec = callPOS.addNewOrder(currentPID, currentPrice, currentQTY, currentTotal, receiptNumber);
@@ -596,11 +604,12 @@ public class POS extends javax.swing.JFrame {
                             "\n-----------------------------------------------------------------------" +
                             "\n                             retail restaurant                             " + "\n" +
                             "\n      #time                                     "+ timeNow +
-                            "\n      #data                                     "+ dateNow +        
+                            "\n      #date                                     "+ dateNow +        
                             "\n      #cashier                                  " + cashierName +
                             "\n-----------------------------------------------------------------------" +
                             "\n      Customer Name:    "+customer+
                             "\n      Receipt No.  " + rn +
+                           "\n      Product IDs:  " + productIDs.toString() +
                             "\n      Product Quantity:       " +rcQty + 
                             "\n      Total Amount:                           " + rcTotal + "  " + "\n" +
                             "\n      Pay:                           " + paymentAmount + "  " + "\n" +

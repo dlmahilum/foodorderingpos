@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -175,10 +176,11 @@ public class MethodMenuList {
     public void getSummary(JTable tableIn) {
         DefaultTableModel tblModel = (DefaultTableModel) tableIn.getModel();
         tblModel.setRowCount(0);
-        String sqlQuery = "SELECT t1.fld_mid , t1.fld_menu , COUNT(t1.fld_menu) AS \"Total Customers\" ," + 
-                "SUM(t1.fld_price) AS \"total price\" , SUM(t2.fld_quantity) AS \"total quantity\" ," + 
-                "SUM(t2.fld_total_amount) AS \"overall amount\" , t2.fld_dt FROM tbl_food_item AS t1 " + 
-                "JOIN tbl_order_details AS t2 ON t1.fld_mid = t2.fld_mid GROUP BY fld_mid;";
+         String sqlQuery = "SELECT fi.fld_mid, fi.fld_code, fi.fld_menu, fi.fld_price, "
+                 + "od.fld_quantity AS fld_sold_out, od.fld_total_amount AS fld_total_sales, od.fld_dt AS fld_date "
+                 + "FROM tbl_food_item fi "
+                 + "JOIN tbl_order_details od ON fi.fld_mid = od.fld_mid";
+
         
         try {
             Connection conn = DriverManager.getConnection(address, userName, passWord);
@@ -190,7 +192,7 @@ public class MethodMenuList {
                 Object[] newRow = {
                     rs.getInt(1)
                     ,rs.getString(2)
-                    ,rs.getInt(3)
+                    ,rs.getString(3)
                     ,rs.getDouble(4)
                     ,rs.getInt(5)
                     ,rs.getDouble(6)
@@ -205,3 +207,7 @@ public class MethodMenuList {
         }
     }
 }
+
+   
+
+
