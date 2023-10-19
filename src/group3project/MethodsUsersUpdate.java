@@ -41,7 +41,8 @@ public class MethodsUsersUpdate {
     public void getAllRows(JTable tableIn) {
         DefaultTableModel tblModel = (DefaultTableModel) tableIn.getModel();
         tblModel.setRowCount(0);
-        String sqlQuery = "SELECT * FROM tbl_users;";
+        String sqlQuery = "SELECT fld_uid, fld_full_name, fld_user_name, fld_user_type, "
+                + "fld_date FROM tbl_users ORDER BY fld_user_type;";
         
         try {
             Connection conn = DriverManager.getConnection(address, userName, passWord);
@@ -55,8 +56,7 @@ public class MethodsUsersUpdate {
                     ,rs.getString(2)
                     ,rs.getString(3)
                     ,rs.getString(4)
-                    ,rs.getString(5)
-                    ,rs.getString(6)};
+                    ,rs.getString(5)};
                 tblModel.addRow(newRow);
             }
             conn.close();
@@ -132,7 +132,8 @@ public class MethodsUsersUpdate {
                 break;
         }
         
-        String sqlQuery = String.format("SELECT * FROM tbl_users"
+        String sqlQuery = String.format("SELECT fld_uid, fld_full_name, fld_user_name, "
+                + "fld_user_type, fld_date FROM tbl_users"
                 + " WHERE LOWER(%s) LIKE LOWER(?) ;",searchField);
         
         try {

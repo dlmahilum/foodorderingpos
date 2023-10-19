@@ -42,13 +42,13 @@ public class UsersUpdate extends javax.swing.JFrame {
         lbluname = new javax.swing.JLabel();
         unameTxt = new javax.swing.JTextField();
         lblpswd = new javax.swing.JLabel();
-        pwdTxt = new javax.swing.JTextField();
         lblutype = new javax.swing.JLabel();
         utypeCmb = new javax.swing.JComboBox<>();
         lbluID = new javax.swing.JLabel();
         lblfullname = new javax.swing.JLabel();
         flnTxt = new javax.swing.JTextField();
         lbluid = new javax.swing.JLabel();
+        pwdTxt = new javax.swing.JPasswordField();
         userbtnPanel = new javax.swing.JPanel();
         btnAdd = new javax.swing.JButton();
         btnedit = new javax.swing.JButton();
@@ -79,7 +79,7 @@ public class UsersUpdate extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Full Name", "Username", "Password", "User Type", "Date"
+                "ID", "Full Name", "Username", "User Type", "Date"
             }
         ));
         jScrollPane1.setViewportView(userTable);
@@ -138,9 +138,10 @@ public class UsersUpdate extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(usersTablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 903, Short.MAX_VALUE)
-                    .addComponent(usersearchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(usersTablePanelLayout.createSequentialGroup()
-                        .addComponent(lbl_Title)
+                        .addGroup(usersTablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(usersearchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbl_Title))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -151,7 +152,7 @@ public class UsersUpdate extends javax.swing.JFrame {
                 .addGap(7, 7, 7)
                 .addComponent(usersearchPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -164,8 +165,6 @@ public class UsersUpdate extends javax.swing.JFrame {
 
         lblpswd.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblpswd.setText("Password:");
-
-        pwdTxt.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
 
         lblutype.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblutype.setText("User Type");
@@ -184,6 +183,9 @@ public class UsersUpdate extends javax.swing.JFrame {
         lbluid.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbluid.setText("User ID: ");
 
+        pwdTxt.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        pwdTxt.setText("jPasswordField1");
+
         javax.swing.GroupLayout adduserPanelLayout = new javax.swing.GroupLayout(adduserPanel);
         adduserPanel.setLayout(adduserPanelLayout);
         adduserPanelLayout.setHorizontalGroup(
@@ -195,10 +197,13 @@ public class UsersUpdate extends javax.swing.JFrame {
                         .addGroup(adduserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblpswd)
                             .addComponent(lbluname))
-                        .addGap(15, 15, 15)
                         .addGroup(adduserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(unameTxt)
-                            .addComponent(pwdTxt)))
+                            .addGroup(adduserPanelLayout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addComponent(unameTxt))
+                            .addGroup(adduserPanelLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(pwdTxt))))
                     .addGroup(adduserPanelLayout.createSequentialGroup()
                         .addComponent(lbluid)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -211,7 +216,7 @@ public class UsersUpdate extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(adduserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(flnTxt)
-                            .addComponent(utypeCmb, 0, 408, Short.MAX_VALUE))))
+                            .addComponent(utypeCmb, 0, 418, Short.MAX_VALUE))))
                 .addGap(19, 19, 19))
         );
         adduserPanelLayout.setVerticalGroup(
@@ -233,14 +238,14 @@ public class UsersUpdate extends javax.swing.JFrame {
                 .addGroup(adduserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(unameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbluname))
-                .addGroup(adduserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(adduserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(adduserPanelLayout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addComponent(lblpswd))
                     .addGroup(adduserPanelLayout.createSequentialGroup()
-                        .addGap(11, 11, 11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(pwdTxt)))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         userbtnPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 0, 0), 3));
@@ -359,10 +364,10 @@ public class UsersUpdate extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(usersTablePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(usersmainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(userbtnPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(adduserPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGroup(usersmainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(userbtnPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(adduserPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(22, 22, 22))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -373,7 +378,7 @@ public class UsersUpdate extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(usersmainPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(usersmainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -631,7 +636,7 @@ public class UsersUpdate extends javax.swing.JFrame {
     private javax.swing.JLabel lbluname;
     private javax.swing.JLabel lblutype;
     private javax.swing.JComboBox<String> opSearchCmb;
-    private javax.swing.JTextField pwdTxt;
+    private javax.swing.JPasswordField pwdTxt;
     private javax.swing.JTextField searchTxt;
     private javax.swing.JTextField unameTxt;
     private javax.swing.JTable userTable;

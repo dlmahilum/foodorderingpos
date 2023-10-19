@@ -163,7 +163,7 @@ public class LoginForm extends javax.swing.JFrame {
         String enteredPassword = new String(txtPassword.getPassword());
 
         try {
-            String query = "SELECT fld_user_type, fld_full_name FROM tbl_users WHERE fld_user_name = ? AND fld_password = ?";
+            String query = "SELECT fld_user_type, fld_full_name FROM tbl_users WHERE BINARY fld_user_name = ? AND BINARY fld_password = ?";
             try (PreparedStatement preparedStatement = cn.prepareStatement(query)) {
                 preparedStatement.setString(1, enteredUsername);
                 preparedStatement.setString(2, enteredPassword);

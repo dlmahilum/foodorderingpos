@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -226,11 +225,11 @@ public class MethodMenuList {
                 break;
         }
         
-        String sqlQuery = String.format("SELECT fi.fld_mid, fi.fld_code, fi.fld_menu, fi.fld_price, "
-                 + "od.fld_quantity AS fld_sold_out, od.fld_total_amount AS fld_total_sales, od.fld_dt AS fld_date "
+        String sqlQuery = String.format("SELECT fi.fld_mid, fi.fld_code, fi.fld_menu, SUM(fi.fld_price), "
+                 + "od.fld_quantity AS fld_sold_out, SUM(od.fld_total_amount) AS fld_total_sales, od.fld_dt AS fld_date "
                  + "FROM tbl_food_item fi "
                  + "JOIN tbl_order_details od ON fi.fld_mid = od.fld_mid"
-                + " WHERE LOWER(%s) LIKE LOWER(?) GROUP BY fld_mid;",searchField);
+                + " WHERE LOWER(%s) LIKE LOWER(?) GROUP BY fld_mid ORDER BY fld_total_sales DESC;",searchField);
         
         
         try {
